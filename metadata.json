@@ -1,0 +1,6 @@
+{
+  "name": "FORGE — AI Product Engineering Platform",
+  "description": "Turn ideas into products. Describe what you want to build and FORGE transforms the idea into a structured product, polished interface, and working codebase.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

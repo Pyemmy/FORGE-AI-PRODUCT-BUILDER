@@ -1,0 +1,503 @@
+@import "tailwindcss";
+
+:root {
+  /* Color Tokens */
+  --ink-950: #08090B;
+  --ink-900: #0D0F12;
+  --ink-800: #15181D;
+  --ink-700: #20242B;
+  --ink-500: #6D737D;
+  --ink-300: #B8BDC6;
+  --paper: #F4F5F7;
+
+  /* Heat Spectrum Accent Family */
+  --forge: #FF6B35;
+  --forge-soft: #FF8A5C;
+  --forge-deep: #C84419;
+  --amber: #FFB547;
+  --ember: #FF4D2E;
+  --ember-surface: #1A0E0C;
+
+  /* Bright Paper Section Contrast Tokens (AA/AAA verified) */
+  --paper-elevated: #FFFFFF;
+  --paper-subtle: #EAECEF;
+  --ink-on-paper-muted: #3E434C;
+  --border-color-on-paper: rgba(8, 9, 11, 0.12);
+  --border-color-on-paper-strong: rgba(8, 9, 11, 0.22);
+
+  /* Border Color Tokens */
+  --border-color-default: rgba(255, 255, 255, 0.08);
+  --border-color-pill: rgba(255, 255, 255, 0.1);
+  --border-color-strong: rgba(255, 255, 255, 0.14);
+  --border-color-accent: rgba(255, 107, 53, 0.45);
+
+  /* Border Shorthand Tokens */
+  --border-default: 1px solid var(--border-color-default);
+  --border-pill: 1px solid var(--border-color-pill);
+  --border-strong: 1px solid var(--border-color-strong);
+  --border-accent: 1px solid var(--border-color-accent);
+
+  /* Glow & Surface Tokens */
+  --surface-glass: rgba(13, 15, 18, 0.78);
+  --surface-pill-glass: rgba(13, 15, 18, 0.74);
+  --glow-forge-radial: radial-gradient(circle at 50% 50%, rgba(255, 107, 53, 0.14) 0%, rgba(255, 107, 53, 0.04) 42%, transparent 70%);
+  --glow-forge-strong: radial-gradient(circle at 50% 50%, rgba(255, 107, 53, 0.22) 0%, rgba(255, 107, 53, 0.06) 48%, transparent 72%);
+  --glow-amber-radial: radial-gradient(circle at 50% 50%, rgba(255, 181, 71, 0.14) 0%, rgba(255, 107, 53, 0.05) 45%, transparent 72%);
+  --glow-ember-bottom: radial-gradient(ellipse 80% 55% at 50% 100%, rgba(255, 77, 46, 0.16) 0%, rgba(255, 107, 53, 0.07) 45%, transparent 78%);
+  --glow-horizon-line: linear-gradient(90deg, transparent 0%, rgba(255, 107, 53, 0.35) 25%, rgba(255, 181, 71, 0.65) 50%, rgba(255, 107, 53, 0.35) 75%, transparent 100%);
+
+  /* Section Atmospheric Backgrounds */
+  --bg-section-blank-canvas: radial-gradient(circle at 85% 20%, rgba(255, 107, 53, 0.09) 0%, transparent 50%), linear-gradient(180deg, var(--ink-950) 0%, var(--ink-900) 50%, var(--ink-950) 100%);
+  --bg-section-one-idea: radial-gradient(ellipse 75% 65% at 50% 50%, var(--ink-800) 0%, var(--ink-950) 78%);
+  --bg-section-intelligence: radial-gradient(circle at 50% 52%, rgba(255, 181, 71, 0.12) 0%, rgba(255, 107, 53, 0.04) 42%, transparent 70%), linear-gradient(180deg, var(--ink-950) 0%, var(--ink-900) 100%);
+  --bg-section-design: linear-gradient(135deg, var(--ink-900) 0%, var(--ink-950) 42%, var(--ember-surface) 78%, var(--ink-950) 100%);
+  --bg-section-code: linear-gradient(180deg, var(--ink-900) 0%, var(--ink-800) 20%, var(--ink-800) 80%, var(--ink-900) 100%);
+  --bg-section-iterate: radial-gradient(ellipse 85% 60% at 50% 100%, rgba(255, 107, 53, 0.14) 0%, rgba(255, 181, 71, 0.05) 42%, transparent 75%), linear-gradient(180deg, var(--ink-900) 0%, var(--ink-950) 100%);
+  --bg-section-ship: radial-gradient(ellipse 90% 65% at 50% 100%, rgba(255, 77, 46, 0.16) 0%, rgba(255, 107, 53, 0.07) 45%, transparent 75%), linear-gradient(180deg, var(--ink-950) 0%, var(--ink-900) 100%);
+  --bg-section-team: radial-gradient(circle at 20% 30%, rgba(255, 181, 71, 0.07) 0%, transparent 55%), linear-gradient(180deg, var(--ink-900) 0%, var(--ink-950) 100%);
+  --bg-section-examples: radial-gradient(circle at 80% 65%, rgba(255, 107, 53, 0.08) 0%, transparent 55%), linear-gradient(180deg, var(--ink-950) 0%, var(--ink-900) 100%);
+  --bg-section-faq: radial-gradient(ellipse 70% 50% at 50% 0%, var(--ink-800) 0%, var(--ink-950) 75%);
+  --bg-section-final-cta: radial-gradient(ellipse 80% 65% at 50% 100%, rgba(255, 107, 53, 0.15) 0%, rgba(255, 77, 46, 0.05) 48%, transparent 78%), linear-gradient(180deg, var(--ink-950) 0%, var(--ink-900) 100%);
+
+  /* Font Families */
+  --font-display: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
+
+  /* Type Scale (Desktop Default) */
+  --text-display-xl: 96px;
+  --lh-display-xl: 0.92;
+  --text-display-l: 72px;
+  --lh-display-l: 0.95;
+  --text-display-m: 56px;
+  --lh-display-m: 1.0;
+  --text-heading-xl: 48px;
+  --lh-heading-xl: 1.05;
+  --text-heading-l: 40px;
+  --lh-heading-l: 1.1;
+  --text-heading-m: 32px;
+  --lh-heading-m: 1.15;
+  --text-heading-s: 24px;
+  --lh-heading-s: 1.2;
+  --text-body-l: 20px;
+  --lh-body-l: 1.5;
+  --text-body-m: 16px;
+  --lh-body-m: 1.5;
+  --text-body-s: 14px;
+  --lh-body-s: 1.45;
+  --text-caption: 12px;
+  --lh-caption: 1.3;
+  --text-mono: 13px;
+  --lh-mono: 1.4;
+
+  /* Spacing Scale (4px base unit) */
+  --space-4: 4px;
+  --space-8: 8px;
+  --space-12: 12px;
+  --space-16: 16px;
+  --space-24: 24px;
+  --space-32: 32px;
+  --space-48: 48px;
+  --space-64: 64px;
+  --space-80: 80px;
+  --space-96: 96px;
+  --space-128: 128px;
+  --space-160: 160px;
+
+  /* Radius Scale */
+  --radius-4: 4px;
+  --radius-8: 8px;
+  --radius-12: 12px;
+  --radius-16: 16px;
+  --radius-24: 24px;
+  --radius-32: 32px;
+  --radius-pill: 9999px;
+
+  /* Grid System Tokens */
+  --grid-columns: 12;
+  --grid-gutter: 24px;
+  --grid-margin: 64px;
+
+  /* Motion Timing & Easing */
+  --duration-micro: 130ms;
+  --duration-fast: 220ms;
+  --duration-standard: 400ms;
+  --duration-expressive: 750ms;
+  --duration-cinematic: 1300ms;
+
+  --ease-default: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-enter: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-exit: cubic-bezier(0.4, 0, 1, 1);
+}
+
+@media (max-width: 1024px) {
+  :root {
+    --text-display-xl: 64px;
+    --text-display-l: 52px;
+    --text-display-m: 42px;
+    --text-heading-xl: 36px;
+    --text-heading-l: 32px;
+    --grid-columns: 8;
+    --grid-gutter: 20px;
+    --grid-margin: 32px;
+  }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --text-display-xl: 48px;
+    --lh-display-xl: 0.96;
+    --text-display-l: 40px;
+    --text-display-m: 32px;
+    --text-heading-xl: 30px;
+    --text-heading-l: 26px;
+    --text-heading-m: 22px;
+    --text-heading-s: 20px;
+    --text-body-l: 18px;
+    --grid-columns: 4;
+    --grid-gutter: 16px;
+    --grid-margin: 20px;
+  }
+}
+
+@media (max-width: 380px) {
+  :root {
+    --text-display-xl: 40px;
+    --lh-display-xl: 0.98;
+    --text-display-l: 32px;
+    --text-display-m: 28px;
+    --text-heading-xl: 26px;
+    --text-heading-l: 24px;
+    --text-heading-m: 20px;
+    --text-heading-s: 18px;
+    --text-body-l: 16px;
+    --grid-columns: 4;
+    --grid-gutter: 12px;
+    --grid-margin: 16px;
+  }
+}
+
+@theme {
+  --color-ink-950: var(--ink-950);
+  --color-ink-900: var(--ink-900);
+  --color-ink-800: var(--ink-800);
+  --color-ink-700: var(--ink-700);
+  --color-ink-500: var(--ink-500);
+  --color-ink-300: var(--ink-300);
+  --color-paper: var(--paper);
+  --color-forge: var(--forge);
+  --color-forge-soft: var(--forge-soft);
+  --color-forge-deep: var(--forge-deep);
+  --color-amber: var(--amber);
+  --color-ember: var(--ember);
+
+  --font-display: var(--font-display);
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+
+  --radius-xs: var(--radius-4);
+  --radius-sm: var(--radius-8);
+  --radius-md: var(--radius-12);
+  --radius-lg: var(--radius-16);
+  --radius-xl: var(--radius-24);
+  --radius-2xl: var(--radius-32);
+  --radius-pill: var(--radius-pill);
+}
+
+@layer base {
+  html {
+    background-color: var(--ink-950);
+    color: var(--paper);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    scroll-behavior: smooth;
+    overflow-x: clip;
+  }
+
+  body {
+    background-color: var(--ink-950);
+    color: var(--paper);
+    min-height: 100vh;
+    overflow-x: clip;
+    width: 100%;
+  }
+
+  ::selection {
+    background-color: var(--forge);
+    color: var(--ink-950);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--forge) !important;
+    outline-offset: 2px !important;
+  }
+}
+
+/* Precision Layout Grid Container */
+.forge-container {
+  width: 100%;
+  max-width: 1440px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--grid-margin);
+  padding-right: var(--grid-margin);
+}
+
+.forge-grid {
+  display: grid;
+  grid-template-columns: repeat(var(--grid-columns), minmax(0, 1fr));
+  gap: var(--grid-gutter);
+}
+
+/* Type Scale Semantic Classes */
+.type-display-xl {
+  font-family: var(--font-display);
+  font-size: var(--text-display-xl);
+  line-height: var(--lh-display-xl);
+  letter-spacing: -0.035em;
+  font-weight: 600;
+  text-wrap: balance;
+}
+
+.type-display-l {
+  font-family: var(--font-display);
+  font-size: var(--text-display-l);
+  line-height: var(--lh-display-l);
+  letter-spacing: -0.03em;
+  font-weight: 600;
+  text-wrap: balance;
+}
+
+.type-display-m {
+  font-family: var(--font-display);
+  font-size: var(--text-display-m);
+  line-height: var(--lh-display-m);
+  letter-spacing: -0.025em;
+  font-weight: 600;
+}
+
+.type-heading-xl {
+  font-family: var(--font-display);
+  font-size: var(--text-heading-xl);
+  line-height: var(--lh-heading-xl);
+  letter-spacing: -0.02em;
+  font-weight: 600;
+}
+
+.type-heading-l {
+  font-family: var(--font-display);
+  font-size: var(--text-heading-l);
+  line-height: var(--lh-heading-l);
+  letter-spacing: -0.02em;
+  font-weight: 600;
+}
+
+.type-heading-m {
+  font-family: var(--font-display);
+  font-size: var(--text-heading-m);
+  line-height: var(--lh-heading-m);
+  letter-spacing: -0.015em;
+  font-weight: 600;
+}
+
+.type-heading-s {
+  font-family: var(--font-display);
+  font-size: var(--text-heading-s);
+  line-height: var(--lh-heading-s);
+  letter-spacing: -0.01em;
+  font-weight: 600;
+}
+
+.type-body-l {
+  font-family: var(--font-sans);
+  font-size: var(--text-body-l);
+  line-height: var(--lh-body-l);
+  letter-spacing: -0.005em;
+}
+
+.type-body-m {
+  font-family: var(--font-sans);
+  font-size: var(--text-body-m);
+  line-height: var(--lh-body-m);
+}
+
+.type-body-s {
+  font-family: var(--font-sans);
+  font-size: var(--text-body-s);
+  line-height: var(--lh-body-s);
+}
+
+.type-caption {
+  font-family: var(--font-sans);
+  font-size: var(--text-caption);
+  line-height: var(--lh-caption);
+}
+
+.type-mono {
+  font-family: var(--font-mono);
+  font-size: var(--text-mono);
+  line-height: var(--lh-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+.text-outline-display {
+  font-family: var(--font-display);
+  font-size: var(--text-display-m);
+  line-height: 1;
+  font-weight: 700;
+  color: transparent;
+  -webkit-text-stroke: 1.5px var(--border-color-strong);
+  font-variant-numeric: tabular-nums;
+  transition: -webkit-text-stroke-color var(--duration-fast) var(--ease-default);
+}
+
+.text-outline-display-active {
+  -webkit-text-stroke: 1.5px var(--forge);
+}
+
+.text-outline-marquee {
+  font-family: var(--font-display);
+  font-size: var(--text-display-l);
+  line-height: 1;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: transparent;
+  -webkit-text-stroke: 1.5px var(--border-color-strong);
+  transition: -webkit-text-stroke-color var(--duration-fast) var(--ease-default),
+    color var(--duration-fast) var(--ease-default);
+}
+
+.text-outline-marquee:hover {
+  -webkit-text-stroke: 1.5px var(--forge);
+}
+
+/* Precision Instrument Borders & Surfaces */
+.border-instrument {
+  border: var(--border-default);
+}
+
+.border-instrument-strong {
+  border: var(--border-strong);
+}
+
+.border-instrument-accent {
+  border: var(--border-accent);
+}
+
+.surface-elevated {
+  background-color: var(--ink-800);
+  border: var(--border-default);
+  transition: border-color var(--duration-fast) var(--ease-default);
+}
+
+.surface-elevated:hover {
+  border-color: var(--border-color-strong);
+}
+
+.surface-glass {
+  background-color: var(--surface-glass);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.surface-pill-nav {
+  background-color: var(--surface-pill-glass);
+  border: var(--border-pill);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+/* Atmospheric Section Textures */
+.pattern-dot-grid {
+  background-image: radial-gradient(var(--border-color-strong) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+.pattern-blueprint-grid {
+  background-image:
+    linear-gradient(to right, var(--border-color-default) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--border-color-default) 1px, transparent 1px),
+    linear-gradient(to right, rgba(255, 181, 71, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 181, 71, 0.04) 1px, transparent 1px);
+  background-size: 24px 24px, 24px 24px, 120px 120px, 120px 120px;
+}
+
+.pattern-scanlines {
+  background-image: repeating-linear-gradient(
+    to bottom,
+    transparent 0px,
+    transparent 3px,
+    rgba(255, 255, 255, 0.022) 3px,
+    rgba(255, 255, 255, 0.022) 4px
+  );
+}
+
+/* Soft Section Divider Transitions */
+.divider-fade-top {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--border-color-default) 20%,
+    var(--border-color-strong) 50%,
+    var(--border-color-default) 80%,
+    transparent 100%
+  );
+  height: 1px;
+  width: 100%;
+}
+
+.divider-heat-horizon {
+  background: var(--glow-horizon-line);
+  height: 1px;
+  width: 100%;
+}
+
+/* Microinteraction Utilities */
+.btn-primary-forge {
+  background-color: var(--forge);
+  color: var(--ink-950);
+  font-weight: 600;
+  transition:
+    transform var(--duration-micro) var(--ease-default),
+    background-color var(--duration-micro) var(--ease-default),
+    box-shadow var(--duration-fast) var(--ease-default);
+}
+
+.btn-primary-forge:hover {
+  background-color: var(--forge-soft);
+  transform: translateY(-1px);
+}
+
+.btn-primary-forge:active {
+  background-color: var(--forge-deep);
+  transform: translateY(0);
+}
+
+.btn-primary-forge .arrow-shift {
+  display: inline-block;
+  transition: transform var(--duration-micro) var(--ease-default);
+}
+
+.btn-primary-forge:hover .arrow-shift {
+  transform: translateX(3px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 120ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .btn-primary-forge:hover {
+    transform: none;
+  }
+
+  .btn-primary-forge:hover .arrow-shift {
+    transform: none;
+  }
+}
